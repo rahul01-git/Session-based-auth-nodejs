@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODOS</title>
+  </head>
+  <body>
+    <div>
+        <h1>Hello <%=username%></h1>
+      <form action="/logout">
+        <button>Logout</button>
+      </form>
+    </div>
+    <br />
+    <div>
+      <form action="/todo" method="post">
+        <input type="text" name="todo" placeholder="Enter todo..." />
+        <button>Save</button>
+      </form>
+    </div>
+    <br />
+    <div>
+      <ul>
+        <%todos.forEach((todo,idx)=>{ %>
+        <li>
+          <%=todo.title%>
+
+          <form action="/todo/edit-todo" method="get">
+            <button name="id" value="<%=todo.id%>">Edit</button>
+          </form>
+
+          <form action="/todo/delete-todo" method="get">
+            <button name="id" value="<%=todo.id%>">delete</button>
+          </form>
+        </li>
+        <br />
+        <%})%>
+      </ul>
+    </div>
+  </body>
+</html>
